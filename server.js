@@ -4,7 +4,6 @@ function randomXToY(minVal,maxVal,floatVal)
   return typeof floatVal=='undefined'?Math.round(randVal):randVal.toFixed(floatVal);
 }
 
-//var userList = new Array();
 var clients = {};
 var io = require('socket.io').listen(8080);
 
@@ -13,31 +12,35 @@ io.sockets.on('connection', function (socket) {
 	socket.on('new', function (data) {
 		clients[socket.id].name = data.name;
 		var position = {};
-		position.x = randomXToY(0, 700);
-		position.y = randomXToY(-400, 0);
+		position.x = randomXToY(0, 300);
+		position.y = randomXToY(0, 200);
 		clients[socket.id].position = position;
-	    socket.emit('add', clients[socket.id]);
+		for(var i in clients){
+	    	socket.emit('add', clients[i]);
+		}
 		socket.broadcast.emit('add', clients[socket.id]);
 	});
   	socket.on('move', function (data) {
+		clients[socket.id].dir = data.dir;
 		switch (data.dir) {
-	            case "left":
-	                clients[socket.id].position.x -= 5;
+	            case 2:
+	                clients[socket.id].position.x -= 2;
 	                break;
-	            case "up":
-	                clients[socket.id].position.y += 5;
+	            case 0:
+	                clients[socket.id].position.y -= 2;
 	                break;
-	            case "right":
-	                clients[socket.id].position.x += 5;
+	            case 3:
+	                clients[socket.id].position.x += 2;
 	                break;
-	            case "down":
-	                clients[socket.id].position.y -= 5;
+	            case 1:
+	                clients[socket.id].position.y += 2;
 	                break;
 		}
 		socket.emit('move', clients[socket.id]);
 		socket.broadcast.emit('move', clients[socket.id]);
 	});
 	socket.on('disconnect', function () {
+		socket.broadcast.emit('remove', clients[socket.id]);
 		delete clients[socket.id];
 	});
 });

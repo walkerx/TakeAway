@@ -14,6 +14,10 @@ socket.on("remove", function (data) {
 	removePlayer(data);
 });
 
+socket.on("shot", function (data) {
+	addBullet(data);
+});
+
 socket.on("disconnect", function (data) {
 	exit(data);
 });
@@ -33,7 +37,7 @@ function keyboardEvent()
 	else if(key[K_DOWN]) {move(DOWN);}
 	else if(key[K_LEFT]) {move(LEFT);}
 	else if(key[K_RIGHT]) {move(RIGHT);}
-	//if(key[K_SPACE]) {player1.shot();}
+	if(key[K_SPACE]) {shot();}
 }
 
 

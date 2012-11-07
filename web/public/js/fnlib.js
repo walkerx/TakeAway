@@ -54,6 +54,10 @@ function addTank(x, y, type, name)
 	tanks[name] = tank;
 }
 
+function shot()
+{
+	socket.emit('shot');
+}
 
 
 

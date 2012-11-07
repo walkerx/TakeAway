@@ -6,7 +6,6 @@ function MyTank(x, y)
 	this.dir = UP;
 	this.score = 0;
 	this.name = 0;
-	
 	this.live = 5;
 	this.score = 0;
 }

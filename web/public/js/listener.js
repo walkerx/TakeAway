@@ -2,8 +2,12 @@
 //socket.on('connect', function (socket) {
 //});
 
-socket.on('add', function (data) {
+socket.on('addOne', function (data) {
 	addPlayer(data);
+});
+
+socket.on('addAll', function (data) {
+	addPlayers(data);
 });
 
 socket.on("move", function (data) {

@@ -6,7 +6,14 @@ function join(){
 }
 
 function addPlayer(data){	
-	addTank(data.position.x,data.position.y,0,data.name);
+	addTank(data.x, data.y, data.type, data.name);
+	//$("#log").text(data.name + ".." + data.position.x.toString() + "..." + data.position.y.toString());
+}
+
+function addPlayers(data){
+	for(var i in data){	
+		addTank(data[i].x, data[i].y, data[i].type, data[i].name);
+	}
 	//$("#log").text(data.name + ".." + data.position.x.toString() + "..." + data.position.y.toString());
 }
 

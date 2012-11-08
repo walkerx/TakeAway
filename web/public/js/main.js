@@ -19,7 +19,7 @@ function draw()
 	//drawHitFxs();
 	//drawBombFxs();
 	drawTanks();
-	drawBullets();
+	//drawBullets();
 	//drawTankStarts();
 	//drawFood();
 	//drawScoreNums();
@@ -29,7 +29,7 @@ function updata()
 {
 	//updataHitFxs();
 	//updataBombFxs();
-	updataBullets();
+	//updataBullets();
 	//updataTanks();
 	//updataTankStarts();
 	//updataFood();

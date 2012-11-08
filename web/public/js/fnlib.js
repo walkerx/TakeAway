@@ -1,6 +1,7 @@
 function join(){
 	var user = {};
-	user.name = $("#name").val();		
+	user.name = $("#name").val();
+	user.type = $("#type").val();		
 	socket.emit('new', user);
 	$("#top").html("<div id=log></div><div id=dir></div>");
 }
@@ -14,7 +15,7 @@ function addPlayers(data){
 	for(var i in data){	
 		addTank(data[i].x, data[i].y, data[i].type, data[i].name);
 	}
-	//$("#log").text(data.name + ".." + data.position.x.toString() + "..." + data.position.y.toString());
+	$("#log").text(data.name + ".." + data.x + "..." + data.y);
 }
 
 function removePlayer(data){
@@ -32,15 +33,15 @@ function move(dir) {
 function updatePosition(data) {
 	//var date = new Date();
 	//$("#dir").text(date.getTime()+"");
-	tanks[data.name].x = data.position.x;
-	tanks[data.name].y = data.position.y;
+	tanks[data.name].x = data.x;
+	tanks[data.name].y = data.y;
 	tanks[data.name].dir = data.dir;
-	//$("#dir").text(dir.name + "..." + dir.position.x + "..." + dir.position.y);
+	$("#dir").text(data.name + "..." + data.x + "..." + data.y);
 }
 
 function updateTank(data){
-	tanks[data.name].x = data.position.x;
-	tanks[data.name].y = data.position.y;
+	tanks[data.name].x = data.x;
+	tanks[data.name].y = data.y;
 }
 
 function addTank(x, y, type, name)
@@ -56,8 +57,11 @@ function addTank(x, y, type, name)
 				break;
 		case 3: tank = new Tank3(x,y);
 				break;
+		default: tank = new MyTank(x, y);
+				break;
 	}
-	if(tank.type == 0) {tank.name = name;}
+	//if(tank.type == 0) {
+	tank.name = name;
 	tanks[name] = tank;
 }
 

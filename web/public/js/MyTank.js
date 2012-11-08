@@ -109,7 +109,7 @@ function Tank3(x, y)
 }
 
 Tank3.prototype = new Tank();
-
+/*
 Tank3.prototype.draw = function(canvas)
 {
 	var myCanvas = document.getElementById(canvas);
@@ -117,4 +117,4 @@ Tank3.prototype.draw = function(canvas)
 	var img = document.getElementById("tankAll");
 	
 	graphics.drawImage(img, 32 * this.dir +(3 - this.life) * 128 + images["tank3"][0], images["tank3"][1], 32, 32, this.x + offerX, this.y + offerY, 32, 32) ;	
-};
+};*/

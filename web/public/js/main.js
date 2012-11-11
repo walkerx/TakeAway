@@ -1,7 +1,7 @@
 var socket = io.connect('http://localhost',{port:8080});
 var tanks = {};
 var key = {};
-var bullets = {};
+var bullets = [];
 
 function main()
 {
@@ -19,7 +19,7 @@ function draw()
 	//drawHitFxs();
 	//drawBombFxs();
 	drawTanks();
-	//drawBullets();
+	drawBullets();
 	//drawTankStarts();
 	//drawFood();
 	//drawScoreNums();

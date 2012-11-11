@@ -65,8 +65,6 @@ Bullet.prototype.move = function()
 		case RIGHT:
 			this.x += this.speed;
 			break;
-			
-		
 	}
 };
 
@@ -332,8 +330,8 @@ function updataBullets()
 
 function drawBullets()
 {
-	//for(var i = 0; i < bullets.length ; i ++)
-	for(var i in bullets)
+	for(var i = 0; i < bullets.length ; i ++)
+	//for(var i in bullets)
 	{
 		bullets[i].draw("main");
 	}

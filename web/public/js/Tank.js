@@ -46,8 +46,6 @@ Tank.prototype.draw = function(canvas)
 	var yy = images[this.src][1];
 	
 	graphics.drawImage(img,32 * this.dir + xx, yy, 32, 32,this.x + offerX,this.y + offerY,32,32) ;	
-	
-	
 	return;
 };
 

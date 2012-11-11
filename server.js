@@ -28,17 +28,22 @@ io.sockets.on('connection', function (socket) {
 		}
 	});
 	
-	socket.on('bulletMove', function () {
-		socket.emit('updateBullets', bullets);
+	//socket.on('bulletMove', function () {
+	
 		//socket.broadcast.emit('updateBullets', bullets);
-	});
+	//});
 	
 	socket.on('disconnect', function () {
 		socket.broadcast.emit('remove', players[socket.id]);
 		delete players[socket.id];
 	});
+	
 });
+
 function update(){
 	fn.battleField(players, bullets);
+	if(bullets.length > 0){
+		io.sockets.emit('bulletMove', bullets);
+	}
 }
 setInterval(update, 20);

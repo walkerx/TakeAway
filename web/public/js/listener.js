@@ -22,6 +22,10 @@ socket.on("shot", function (data) {
 	addBullet(data);
 });
 
+socket.on("bulletMove", function (data) {
+	updateBullets(data);
+});
+
 socket.on("disconnect", function (data) {
 	exit(data);
 });

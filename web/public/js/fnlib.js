@@ -70,7 +70,19 @@ function shot()
 	socket.emit('shot');
 }
 
+function addBullet(data){
+	var bullet = new Bullet(data.x, data.y, data.type, data.dir, data.name);
+	bullets.push(bullet);
+}
 
+function updateBullets(data){
+	var newBullets = [];
+	for(var i = 0; i < data.length; i++){
+		var bullet = new Bullet(data[i].x, data[i].y, data[i].type, data[i].dir, data[i].name);
+		newBullets.push(bullet);
+	}
+	bullets = newBullets;
+}
 
 
 
